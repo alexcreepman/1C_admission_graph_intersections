@@ -55,20 +55,20 @@ def initialize_parser_and_get_arguments():
     return args.filename, args.vertices, args.save_image
 
 
-def in_bounds_and_colored(a: Point, img_data: np.ndarray):
+def in_bounds_and_colored(a: Point, img_data: np.array):
     '''Checks if the point has correct coordinates and if it's black.'''
     width, height = img_data.shape
     return a.x >= 0 and a.y >= 0 and a.x < width and a.y < height and \
            img_data[a.x][a.y]
 
 
-def in_bounds(a: Point, img_data: np.ndarray):
+def in_bounds(a: Point, img_data: np.array):
     '''Checks if the point has correct coordinates.'''
     width, height = img_data.shape
     return a.x >= 0 and a.y >= 0 and a.x < width and a.y < height
 
 
-def could_be_intersection(a: Point, img_data: np.ndarray):
+def could_be_intersection(a: Point, img_data: np.array):
     '''Self-explanatory. Checks if this point could be the intersection of 2 or more edges.'''
     if not img_data[a.x][a.y]:
         return False
@@ -100,7 +100,7 @@ def could_be_intersection(a: Point, img_data: np.ndarray):
     return count >= 2
 
 
-def find_intersections(img_data: np.ndarray):
+def find_intersections(img_data: np.array):
     '''
     This method takes image in the form of numpy array of zeroes and ones,
     scanning all the points that could be intersections, checking them and
